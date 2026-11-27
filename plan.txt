@@ -1,0 +1,6 @@
+1. Finish the structure generation (divalent MOH+ and monovalent). 
+2. Featurise the M atoms with MACE embeddings
+3. Cluster, and check if the 3 types of sites are distinct clusters, or if elements form clusters, etc.
+4. Use embeddings to find distinct sites for partially filled d orbital atoms to calculate U values on
+5. Determine sampling strategy across full space to train GNN on adsorption energies (HNO2, NO2, H2O)
+6. Screen the rest with GNN

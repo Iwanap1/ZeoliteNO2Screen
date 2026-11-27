@@ -1,0 +1,132 @@
+frameworks:
+  codes: [MWW, MAZ, ITH, GME, HEU, MOR, EAB, CON, EMT, LEV, IWW, UTL, MFI, LTL, AEI, FAU, AEL, SOD, KFI, STT, AFX, MEL, RHO, GIS, IFR, SAV, CHA, ERI, PHI, LTA, MFS, OFF, AFI, PAU, TON, BEA, FER, RUT, EUO, ATO, MTW, DDR]
+  directory: data/zeolite_cifs
+
+species:
+  M2+:
+    enabled: true
+    metals: [Cu, Zn, Ni, Co, Fe, Mn, Mg, Ca]
+    n_al: 2
+    ring_sizes: [4, 6, 8]
+
+  M+:
+    enabled: false
+    metals: [Cu]
+    n_al: 1
+    ring_sizes: [6, 8]
+
+  MOH+:
+    enabled: false
+    metals: [Cu, Fe]
+    n_al: 1
+    ring_sizes: [6, 8]
+
+enumeration:
+  ring_method: zse
+  ring_validation: goetzke
+  t_o_bond_cutoff: 2.1
+
+  enforce_lowenstein: true
+
+  symmetry:
+    enabled: true
+    symprec: 0.01
+    max_al_distance: null
+    one_per_pair_ring: true
+
+placement:
+  method: constrained_oxygen_coordination
+  search_radius: 3.25
+  max_seeds: 12
+  optimizer:
+    method: SLSQP
+    maxiter: 200
+    ftol: 1.0e-8
+  dedup_tolerance: 0.5
+  oxygen_attraction_width: 0.45
+  al_oxygen_preference: 0.35
+  ring_confinement_weight: 0.03
+
+metal_geometry:
+  Cu:
+    target_mo: 2.05
+    min_mo: 1.80
+    min_mt: 2.40
+    coord_cutoff: 2.70
+
+  Zn:
+    target_mo: 2.05
+    min_mo: 1.80
+    min_mt: 2.40
+    coord_cutoff: 2.70
+
+  Ni:
+    target_mo: 2.05
+    min_mo: 1.80
+    min_mt: 2.40
+    coord_cutoff: 2.70
+
+  Co:
+    target_mo: 2.10
+    min_mo: 1.85
+    min_mt: 2.45
+    coord_cutoff: 2.80
+
+  Fe:
+    target_mo: 2.10
+    min_mo: 1.85
+    min_mt: 2.45
+    coord_cutoff: 2.80
+
+  Mn:
+    target_mo: 2.20
+    min_mo: 1.90
+    min_mt: 2.50
+    coord_cutoff: 2.90
+
+  Mg:
+    target_mo: 2.10
+    min_mo: 1.85
+    min_mt: 2.45
+    coord_cutoff: 2.80
+
+  Ca:
+    target_mo: 2.40
+    min_mo: 2.10
+    min_mt: 2.70
+    coord_cutoff: 3.10
+
+validation:
+  minimum_coordination: 2
+  flag_steric_clashes: true
+  flag_low_coordination: true
+  flag_optimizer_failure: true
+  retain_failed_structures: true
+  filter_by_ring_size_after_generation: false
+
+output:
+  directory: data/generated_structures
+  structure_format: extxyz
+  save_structures: true
+  save_diagnostics_csv: true
+  save_metadata_json: false
+  include:
+    - framework
+    - cation
+    - efw_site_type
+    - al_indices
+    - al_al_distance_A
+    - al_pair_multiplicity
+    - shared_ring_sizes
+    - six_mr_arrangements
+    - source_ring_size
+    - generation_ring_sizes
+    - coordination_number
+    - coordinating_oxygens
+    - min_mo_A
+    - min_mt_A
+    - steric_clash
+    - low_coordination
+    - placement_feasible
+    - optimizer_converged
+    - geometry_status
